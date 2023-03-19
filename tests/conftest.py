@@ -9,12 +9,20 @@ from webdriver_manager.firefox import GeckoDriverManager
 @pytest.fixture
 def init_driver(request):
     browser_name = request.config.getoption("--browser")
-    if browser_name == "firefox":
-        service = FirefoxService(executable_path=GeckoDriverManager().install())
-        driver = webdriver.Firefox(service=service)
-    else:
+    global driver, driver_options
+    if browser_name in ("chrome", "chrome_headless"):
+        driver_options = webdriver.ChromeOptions()
         service = ChromeService(executable_path=ChromeDriverManager().install())
-        driver = webdriver.Chrome(service=service)
+        driver = webdriver.Chrome(service=service, options=driver_options)
+    elif browser_name == "firefox":
+        driver_options = webdriver.FirefoxOptions()
+        service = FirefoxService(executable_path=GeckoDriverManager().install())
+        driver = webdriver.Firefox(service=service, options=driver_options)
+    if browser_name == "chrome_headless":
+        driver_options.add_argument("--headless")
+        driver_options.add_argument("--disable-dev-shm-usage")
+        driver_options.add_argument("--no-sandbox")
+
     driver.implicitly_wait(10)
     driver.maximize_window()
     yield driver
@@ -24,5 +32,5 @@ def init_driver(request):
 
 def pytest_addoption(parser):
     parser.addoption(
-        "--browser", action="store", default="chrome", help="browser: chrome or firefox"
+        "--browser", action="store", default="chrome", help="browser: chrome, firefox or chrome headless"
     )

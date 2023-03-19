@@ -10,7 +10,7 @@ This is a PyTest/Selenium framework template with GitHub Actions integration, Al
 ## Usage
 
 1. To run the tests: `pytest`.
-2. To run the tests with parallel execution and multibrowser support: `pytest -n 2 --browser chrome,firefox`.
+2. To run the tests with parallel execution and multibrowser support: `pytest -n 2 --browser chrome,firefox,chrome_headless`.
 3. To run the tests and generate the Allure report: `pytest --alluredir=./reports/allure-report`.
 4. To see Allure report dashboard: `allure serve ./reports/allure-report`
 
