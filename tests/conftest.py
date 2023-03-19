@@ -21,7 +21,7 @@ def init_driver(request):
         driver = webdriver.Firefox(service=service, options=driver_options)
     elif browser_name == "chrome_headless":
         driver_options = webdriver.ChromeOptions()
-        service = ChromeService(executable_path=ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
+        service = ChromeService(executable_path=ChromeDriverManager(chrome_type=ChromeType.CHROMIUM, version='100.0.4896.20').install())
         driver = webdriver.Chrome(service=service, options=driver_options)
         driver_options.add_argument("--headless")
         driver_options.add_argument("--disable-dev-shm-usage")
