@@ -9,9 +9,10 @@ This is a PyTest/Selenium framework template with GitHub Actions integration, Al
 
 ## Usage
 
-1. To run the test suite: `pytest`.
-2. To run the test suite with parallel execution and multibrowser support: `pytest -n 2 --browser chrome,firefox`.
-3. To generate the Allure report: `pytest --alluredir=./reports/allure-report && allure serve ./reports/allure-report`.
+1. To run the tests: `pytest`.
+2. To run the tests with parallel execution and multibrowser support: `pytest -n 2 --browser chrome,firefox`.
+3. To run the tests and generate the Allure report: `pytest --alluredir=./reports/allure-report`.
+4. To see Allure report dashboard: `allure serve ./reports/allure-report`
 
 ## Directory Structure
 
@@ -19,7 +20,6 @@ This is a PyTest/Selenium framework template with GitHub Actions integration, Al
 - `pages`: Contains the page object model classes.
 - `helpers`: Contains the utility functions.
 - `drivers`: Contains the web driver executables.
-- `logs`: Contains the execution log files.
 - `reports`: Contains the Allure report.
 - `.github/workflows`: Contains the GitHub Actions configuration file.
 

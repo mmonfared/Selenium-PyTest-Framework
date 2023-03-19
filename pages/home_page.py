@@ -3,14 +3,9 @@ from selenium.webdriver.common.by import By
 
 
 class HomePage(BasePage):
-    search_box = (By.NAME, "q")
+    WORKSPACE_NAME = (By.CSS_SELECTOR, "[data-cy='workspace-dropdown']")
 
-    def load(self):
-        self.driver.get("https://www.google.com")
+    def get_workspace_text(self):
+        return self.find_element(self.WORKSPACE_NAME).text
 
-    def search(self, query):
-        self.find_element(self.search_box).send_keys(query)
-        self.find_element(self.search_box).submit()
 
-    def get_title(self):
-        return self.driver.title
