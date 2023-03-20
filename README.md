@@ -23,13 +23,14 @@ This is a PyTest/Selenium framework template with GitHub Actions integration, Al
 - `reports`: Contains the Allure report.
 - `.github/workflows`: Contains the GitHub Actions configuration file.
 
-### Hierarchy
 
 ```
 project
 │   README.md
 │   requirements.txt
-│
+│   configs.py
+│   .gitignore
+|
 └───tests
 │   │   conftest.py
 │   │   test_example.py
@@ -40,13 +41,6 @@ project
 │
 └───helpers
 │   │   utils.py
-│
-└───drivers
-│   │   chromedriver.exe
-│   │   geckodriver.exe
-│
-└───logs
-│   │   execution.log
 │
 └───reports
 │   └───allure-report
