@@ -22,13 +22,13 @@ def init_driver(request):
     elif browser_name == "chrome_headless":
         driver_options = webdriver.ChromeOptions()
         service = ChromeService(executable_path=ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
-        driver = webdriver.Chrome(service=service, options=driver_options)
         driver_options.add_argument("--no-sandbox")
         driver_options.add_argument("--headless")
         driver_options.add_argument("--disable-dev-shm-usage")
         # driver_options.add_argument('--disable-gpu')
         # driver_options.add_argument('disable-infobars')
         # driver_options.add_argument("--disable-extensions")
+        driver = webdriver.Chrome(service=service, options=driver_options)
 
     driver.implicitly_wait(10)
     driver.maximize_window()
